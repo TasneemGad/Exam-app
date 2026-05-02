@@ -1,0 +1,158 @@
+<div class="flex h-screen w-full overflow-hidden">
+
+  <div class=" min-h-screen flex flex-col px-8 py-8 shrink-0"
+    style="background: linear-gradient(160deg, #d6e4ff 0%, #deeaff 40%, #eef3ff 100%);">
+
+    <div class="flex items-center gap-2 mb-14">
+      <div
+        class="w-7 h-7 rounded-md bg-blue-600 flex items-center justify-center shadow-sm">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 text-white"
+          viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2.5">
+          <path d="M12 2L2 7l10 5 10-5-10-5z" />
+          <path d="M2 17l10 5 10-5" />
+          <path d="M2 12l10 5 10-5" />
+        </svg>
+      </div>
+      <span class="text-gray-700 font-semibold text-sm tracking-tight">Exam
+        App</span>
+    </div>
+
+    <h1 class="text-xl font-bold text-gray-800 leading-snug mb-10">
+      Empower your learning journey<br>with our smart exam platform.
+    </h1>
+    <div class="flex flex-col gap-7">
+
+      <div class="flex gap-3">
+        <div
+          class="w-8 h-8 rounded-lg border border-blue-200 bg-white/70 flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-blue-600"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 6v6l4 2" />
+          </svg>
+        </div>
+        <div>
+          <h3 class="text-blue-600 font-semibold text-sm mb-1">Tailored
+            Diplomas</h3>
+          <p class="text-gray-500 text-xs leading-relaxed">Choose from
+            specialized tracks like Frontend, Backend, and Mobile
+            Development.</p>
+        </div>
+      </div>
+
+      <div class="flex gap-3">
+        <div
+          class="w-8 h-8 rounded-lg border border-blue-200 bg-white/70 flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-blue-600"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+            <line x1="9" y1="9" x2="15" y2="9" />
+            <line x1="9" y1="12" x2="15" y2="12" />
+            <line x1="9" y1="15" x2="13" y2="15" />
+          </svg>
+        </div>
+        <div>
+          <h3 class="text-blue-600 font-semibold text-sm mb-1">Focused
+            Exams</h3>
+          <p class="text-gray-500 text-xs leading-relaxed">Access topic-specific
+            tests including HTML, CSS, JavaScript, and more.</p>
+        </div>
+      </div>
+
+      <div class="flex gap-3">
+        <div
+          class="w-8 h-8 rounded-lg border border-blue-200 bg-white/70 flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-blue-600"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <polyline points="9 11 12 14 22 4" />
+            <path
+              d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+          </svg>
+        </div>
+        <div>
+          <h3 class="text-blue-600 font-semibold text-sm mb-1">Smart Multi-Step
+            Forms</h3>
+          <p class="text-gray-500 text-xs leading-relaxed">Navigate guided
+            registration and exam flows with intuitive step-by-step design.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="flex-1 bg-white flex items-center justify-center">
+    <div class="w-full max-w-sm px-8">
+      <form>
+
+        <h2 class="text-2xl font-bold text-gray-800 mb-6">Login</h2>
+
+        <div class="mb-4">
+          <label
+            class="block text-xs font-medium text-gray-600 mb-1.5">Username</label>
+          <input
+            type="text"
+            placeholder="user123"
+            [formField]="loginForm.username"
+            class="w-full border border-gray-300 rounded px-3 py-2 text-sm text-gray-700 placeholder-gray-400 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition" />
+          <app-error-message [field]="loginForm.username"
+            [submitted]="formState.submitted" />
+        </div>
+
+        <div class="mb-2">
+          <label
+            class="block text-xs font-medium text-gray-600 mb-1.5">Password</label>
+          <div class="relative">
+            <input
+              [type]="showPassword() ? 'text' : 'password'"
+              placeholder="*******"
+              [formField]="loginForm.password"
+              class="w-full border border-gray-300 rounded px-3 py-2 pr-10 text-sm text-gray-700 placeholder-gray-400 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition" />
+            <button
+              type="button"
+              (click)="showPassword.set(!showPassword())"
+              class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2">
+                <path *ngIf="!showPassword()"
+                  d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                <circle *ngIf="!showPassword()" cx="12" cy="12" r="3" />
+                <path *ngIf="showPassword()"
+                  d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94" />
+                <path *ngIf="showPassword()"
+                  d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19" />
+                <line *ngIf="showPassword()" x1="1" y1="1" x2="23" y2="23" />
+              </svg>
+            </button>
+            <app-error-message [field]="loginForm.password()"
+              [submitted]="formState.submitted" />
+          </div>
+        </div>
+
+        <div class="flex justify-end mb-4">
+          <a href="#"
+            class="text-xs text-blue-600 font-medium hover:underline">Forgot
+            your password?</a>
+        </div>
+
+        <button
+        type="button"
+          class="w-full bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white text-sm font-medium py-2.5 rounded flex items-center justify-center gap-2 transition-colors cursor-pointer"
+          (click)="onLogin()">
+          Login
+        </button>
+
+        <p class="text-center text-xs text-gray-500 mt-4">
+          Don't have an account?
+          <a href="#" class="text-blue-600 font-medium hover:underline">Create
+            yours</a>
+        </p>
+      </form>
+    </div>
+  </div>
+
+</div>

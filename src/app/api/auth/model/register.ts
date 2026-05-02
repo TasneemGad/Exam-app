@@ -1,0 +1,3 @@
+interface Register {
+  email: string;
+}
