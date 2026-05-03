@@ -26,10 +26,15 @@ export function markAllTouched(form: any) {
 
   if (!byPropertyKey) return;
 
-  byPropertyKey.forEach((control) => {
-    const selfTouched = control.node?.nodeState?.selfTouched;
-    if (typeof selfTouched === 'function') {
+  byPropertyKey.forEach((entry) => {
+    const selfTouched = entry?.node?.nodeState?.selfTouched;
+    if (typeof selfTouched?.set === 'function') {
+
       selfTouched.set(true);
+    }
+    const nestedChildren = entry?.structure?.childrenMap?.();
+    if (nestedChildren?.byPropertyKey) {
+      markAllTouched(entry);
     }
   });
 }

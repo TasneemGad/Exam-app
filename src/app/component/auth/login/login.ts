@@ -6,23 +6,26 @@ import { form, validateStandardSchema, FormField } from "@angular/forms/signals"
 import { ErrorMessage } from "../../../shared/forms/error-message/error-message";
 import { createFormState, markAllTouched } from '../../../shared/forms/form-state';
 import { LoginFacade } from '../../../api/auth/facades/login-facade';
+import { ProgressSpinner } from 'primeng/progressspinner';
+
 @Component({
   selector: 'app-login',
-  imports: [CommonModule, FormField, ErrorMessage],
+  imports: [CommonModule, FormField, ErrorMessage, ProgressSpinner],
   templateUrl: './login.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginComponent {
-  private facade = inject(LoginFacade);
+  public facade = inject(LoginFacade);
+  public isLoading = signal(false);
 
   loginModel = signal<Login>({
     username: '',
-    password: '',
+    password: ''
   });
 
   loginSchema = object({
-    username: string().trim().min(1, "Username is required"),
-    password: string().min(8, "Password must be at least 8 chars"),
+    username: string().trim().min(2, "Username is required"),
+    password: string().min(8, "Password must be at least 8 chars")
   });
 
   loginForm = form(this.loginModel,
@@ -40,10 +43,15 @@ export class LoginComponent {
   }
 
   onLogin() {
-    this.formState.submit();
     const value = this.loginForm();
-    if (value.invalid()) markAllTouched(value);
-    else this.facade.login(value.value());
+    this.isLoading.set(true);
+    if (value.invalid()) {
+      markAllTouched(value);
+      this.formState.submit();
+    } else {
+      this.formState.submit();
+      this.facade.login(value.value());
+    }
   }
 
 }

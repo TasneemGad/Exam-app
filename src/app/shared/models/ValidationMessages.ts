@@ -1,8 +1,8 @@
-export type ValidationMessages = {
-  required: () => string;
+export interface ValidationMessages {
+  required: (fieldName?: string) => string;
+  invalid: (fieldName?: string) => string;
   minLength: (min: number) => string;
   maxLength: (max: number) => string;
-  invalid: () => string;
   email: () => string;
   passwordWeak: () => string;
-};
+}
